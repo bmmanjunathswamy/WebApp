@@ -25,6 +25,7 @@ namespace API
                 try 
                 {
                     var context = services.GetRequiredService<EcommerceContext>();
+                    context.Database.EnsureDeleted();
                     await context.Database.MigrateAsync();
                     await EcommerceContextSeed.SeedAsync(context, loggerFactory);
 

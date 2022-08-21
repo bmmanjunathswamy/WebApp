@@ -26,13 +26,13 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             //Workaround for sqlite as it doesn't support decimal, datetimeoffset.
-            if(Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
-            {
-                foreach(var item in modelBuilder.Model.GetEntityTypes())
+            //if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            //{
+                foreach (var item in modelBuilder.Model.GetEntityTypes())
                 {
                     var props = item.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
                     var dateTimeProperties = item.ClrType.GetProperties().Where(p => p.PropertyType == typeof(DateTimeOffset));
-                    foreach(var prop in props)
+                    foreach (var prop in props)
                     {
                         modelBuilder.Entity(item.Name).Property(prop.Name).HasConversion<double>();
                     }
@@ -41,7 +41,7 @@ namespace Infrastructure.Data
                         modelBuilder.Entity(item.Name).Property(prop.Name).HasConversion(new DateTimeOffsetToBinaryConverter());
                     }
                 }
-            }
+            //}
         }
     }
 }
