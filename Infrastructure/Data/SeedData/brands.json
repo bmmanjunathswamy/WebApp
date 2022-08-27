@@ -1,30 +1,30 @@
 [
   {
-    "Id": 1,
-    "Name": "Adidas"
+    "ProductId": 1,
+    "Name": "AdProductIdas"
   },
   {
-    "Id": 2,
+    "ProductId": 2,
     "Name": "ASICS"
   },
   {
-    "Id": 3,
+    "ProductId": 3,
     "Name": "Victor"
   },
   {
-    "Id": 4,
+    "ProductId": 4,
     "Name": "Yonex"
   },
   {
-    "Id": 5,
+    "ProductId": 5,
     "Name": "Puma"
   },
   {
-    "Id": 6,
+    "ProductId": 6,
     "Name": "Nike"
   },
   {
-    "Id": 7,
+    "ProductId": 7,
     "Name": "Babolat"
   }
 ]

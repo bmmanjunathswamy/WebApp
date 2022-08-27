@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.EcommerceMigrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20220827180042_MigrationsContextEcommerceNew")]
+    [Migration("20220827185550_MigrationsContextEcommerceNew")]
     partial class MigrationsContextEcommerceNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,6 +157,9 @@ namespace Infrastructure.EcommerceMigrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
