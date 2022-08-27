@@ -31,6 +31,7 @@ namespace API
 
                     var userManager = services.GetRequiredService<UserManager<AppUser>>();
                     var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureDeleted();
                     await identityContext.Database.MigrateAsync();
                     await AppIdentityDbContextSeed.SeedUserAsync(userManager);
                 }

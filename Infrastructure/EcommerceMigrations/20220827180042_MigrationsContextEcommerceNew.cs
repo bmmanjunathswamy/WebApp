@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Infrastructure.EcommerceMigrations
 {
     public partial class MigrationsContextEcommerceNew : Migration
@@ -10,11 +12,11 @@ namespace Infrastructure.EcommerceMigrations
                 name: "DeliveryMethods",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ShortName = table.Column<string>(nullable: true),
-                    DeliveryTime = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    ShortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(20,2)", nullable: false)
                 },
                 constraints: table =>
@@ -26,9 +28,9 @@ namespace Infrastructure.EcommerceMigrations
                 name: "ProductBrands",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,9 +41,9 @@ namespace Infrastructure.EcommerceMigrations
                 name: "ProductTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,20 +54,20 @@ namespace Infrastructure.EcommerceMigrations
                 name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BuyerEmail = table.Column<string>(nullable: true),
-                    OrderDate = table.Column<long>(nullable: false),
-                    ShipToAddress_FirstName = table.Column<string>(nullable: true),
-                    ShipToAddress_LastName = table.Column<string>(nullable: true),
-                    ShipToAddress_Street = table.Column<string>(nullable: true),
-                    ShipToAddress_City = table.Column<string>(nullable: true),
-                    ShipToAddress_State = table.Column<string>(nullable: true),
-                    ShipToAddress_Zipcode = table.Column<string>(nullable: true),
-                    DeliveryMethodId = table.Column<int>(nullable: true),
-                    Subtotal = table.Column<double>(nullable: false),
-                    Status = table.Column<string>(nullable: false),
-                    PaymentIntentId = table.Column<string>(nullable: true)
+                    BuyerEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderDate = table.Column<long>(type: "bigint", nullable: false),
+                    ShipToAddress_FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShipToAddress_LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShipToAddress_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShipToAddress_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShipToAddress_State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShipToAddress_Zipcode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryMethodId = table.Column<int>(type: "int", nullable: true),
+                    Subtotal = table.Column<double>(type: "float", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,22 +76,21 @@ namespace Infrastructure.EcommerceMigrations
                         name: "FK_Order_DeliveryMethods_DeliveryMethodId",
                         column: x => x.DeliveryMethodId,
                         principalTable: "DeliveryMethods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 120, nullable: false),
-                    Description = table.Column<string>(maxLength: 185, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(185)", maxLength: 185, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(20,2)", nullable: false),
-                    PictureUrl = table.Column<string>(nullable: false),
-                    ProductTypeId = table.Column<int>(nullable: false),
-                    ProductBrandId = table.Column<int>(nullable: false)
+                    PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductTypeId = table.Column<int>(type: "int", nullable: false),
+                    ProductBrandId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,14 +113,14 @@ namespace Infrastructure.EcommerceMigrations
                 name: "OrderItems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemOrdered_ProductItemId = table.Column<int>(nullable: true),
-                    ItemOrdered_ProductName = table.Column<string>(nullable: true),
-                    ItemOrdered_PictureUrl = table.Column<string>(nullable: true),
+                    ItemOrdered_ProductItemId = table.Column<int>(type: "int", nullable: true),
+                    ItemOrdered_ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemOrdered_PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(20,2)", nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
-                    OrderId = table.Column<int>(nullable: true)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
