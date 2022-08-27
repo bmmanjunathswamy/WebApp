@@ -9,3 +9,5 @@ publish
 sports-center - Web Deploy.pubxml
 sports-center - Web Deploy.pubxml.user
 documentation
+*.v2
+/.vs/eCommerce-App/FileContentIndex
