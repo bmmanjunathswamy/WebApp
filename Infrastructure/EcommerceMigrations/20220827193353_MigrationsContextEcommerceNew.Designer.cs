@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.EcommerceMigrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20220827185550_MigrationsContextEcommerceNew")]
+    [Migration("20220827193353_MigrationsContextEcommerceNew")]
     partial class MigrationsContextEcommerceNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,9 @@ namespace Infrastructure.EcommerceMigrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("DeliveryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeliveryTime")
                         .HasColumnType("nvarchar(max)");
@@ -176,6 +179,9 @@ namespace Infrastructure.EcommerceMigrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

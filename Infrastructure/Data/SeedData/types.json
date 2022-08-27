@@ -1,18 +1,18 @@
 [
   {
-    "Id": 1,
+    "ProductTypeId": 1,
     "Name": "Shoes"
   },
   {
-    "Id": 2,
+    "ProductTypeId": 2,
     "Name": "Rackets"
   },
   {
-    "Id": 3,
+    "ProductTypeId": 3,
     "Name": "Football"
   },
   {
-    "Id": 4,
+    "ProductTypeId": 4,
     "Name": "Kit Bags"
   }
 ]

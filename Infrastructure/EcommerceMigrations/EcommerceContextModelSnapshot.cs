@@ -30,6 +30,9 @@ namespace Infrastructure.EcommerceMigrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("DeliveryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DeliveryTime")
                         .HasColumnType("nvarchar(max)");
 
@@ -174,6 +177,9 @@ namespace Infrastructure.EcommerceMigrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
